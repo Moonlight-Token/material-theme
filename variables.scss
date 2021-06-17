@@ -1,0 +1,40 @@
+/* Theme Colors */
+$theme-purple: #7F00FF;
+$theme-dark-purple: #250063;
+$theme-darker-purple: #120031;
+$theme-pastel-purple: #a872ff;
+$theme-greyed-purple: #281b42;
+
+$theme-blue: #3f00fc;
+$theme-orange: #f0ba3a;
+$theme-pink: #fb336e;
+
+/*  Typography */
+@import url('https://fonts.googleapis.com/css?family=Cabin:100,200,300,400,500,700');
+$mdc-typography-font-family: unquote("Cabin, sans-serif");
+
+/* Layout */
+$mdc-layout-grid-max-width: 1500px;
+$theme-drawer-width-threshold: 840px;
+
+/* Mdc Colors */
+$mdc-theme-primary: $theme-pastel-purple;
+$mdc-theme-secondary: $theme-pink;
+$mdc-theme-surface: $theme-greyed-purple;
+$mdc-theme-background: $theme-darker-purple;
+$mdc-theme-error: #f12e51;
+$mdc-theme-on-surface: #ffffff;
+
+// Non-MDC Theme
+
+@mixin theme-primary-gradient($direction) {
+    background: $theme-pastel-purple;
+    background: -webkit-linear-gradient(to $direction, $theme-purple, $theme-blue) !important;
+    background: linear-gradient(to $direction, $theme-purple, $theme-blue) !important;
+}
+
+@mixin theme-secondary-gradient($direction) {
+    background: $theme-orange;
+    background: -webkit-linear-gradient(to $direction, $theme-orange, $theme-pink) !important;
+    background: linear-gradient(to $direction, $theme-orange, $theme-pink) !important;
+}
