@@ -1,10 +1,18 @@
+/* MDC Theme */
+@use "@material/theme" with (
+  $primary: #a872ff,
+  $secondary: #fb336e,
+  $background: #120031,
+  $surface: #281b42,
+  $on-surface: #ffffff,
+);
+
 /* Theme Colors */
 $theme-purple: #7F00FF;
 $theme-dark-purple: #250063;
 $theme-darker-purple: #120031;
 $theme-pastel-purple: #a872ff;
 $theme-greyed-purple: #281b42;
-
 $theme-blue: #3f00fc;
 $theme-orange: #f0ba3a;
 $theme-pink: #fb336e;
@@ -16,14 +24,6 @@ $mdc-typography-font-family: unquote("Cabin, sans-serif");
 /* Layout */
 $mdc-layout-grid-max-width: 1500px;
 $theme-drawer-width-threshold: 840px;
-
-/* Mdc Colors */
-$mdc-theme-primary: $theme-pastel-purple;
-$mdc-theme-secondary: $theme-pink;
-$mdc-theme-surface: $theme-greyed-purple;
-$mdc-theme-background: $theme-darker-purple;
-$mdc-theme-error: #f12e51;
-$mdc-theme-on-surface: #ffffff;
 
 // Non-MDC Theme
 

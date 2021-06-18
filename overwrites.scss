@@ -1,7 +1,7 @@
 body {
   display: flex;
   margin: 0;
-  background: mdc-theme-prop-value(background);
+  background-color: $theme-darker-purple;
   color: white;
 }
 
@@ -34,6 +34,16 @@ a {
 
 .mdc-fab {
   @include theme-secondary-gradient(left);
+}
+
+.mdc-button--outlined:not(:disabled) {
+  border-color: $theme-pastel-purple;
+}
+
+// Text Field
+
+.mdc-text-field--filled.mdc-ripple-upgraded--background-focused .mdc-text-field__ripple::before, .mdc-text-field--filled:not(.mdc-ripple-upgraded):focus .mdc-text-field__ripple::before {
+  opacity: 0.05;
 }
 
 // Top app bar
@@ -145,6 +155,12 @@ a {
   }
 }
 
+// Lists
+
+.mdc-list-divider {
+  border: none;
+}
+
 // Drawer
 
 .mdc-drawer--modal + .mdc-drawer-scrim {
@@ -154,8 +170,21 @@ a {
 .mdc-drawer {
   border: none;
   background-color: $theme-darker-purple;
-}
 
-.mdc-list-item--gradient {
-  @include theme-primary-gradient(left);
+  .mdc-list-item--gradient {
+    @include theme-primary-gradient(left);
+  }
+
+  .mdc-list-item {
+    margin: 8px;
+    height: 36px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+
+  .mdc-list-item__graphic {
+      margin-right: 12px;
+  }
+
 }
