@@ -121,82 +121,81 @@ a {
   color: $theme-orange;
 }
 
-.mdc-top-app-bar .mdc-button {
-  margin-left: 20px;
-}
+/* Drawer Button and titles conditionnal display */
 
 .mdc-top-app-bar__custom-menu {
-  position: relative;
-  cursor: pointer;
-  margin-left: 20px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-
-  .material-icons {
-    font-size: 18px;
-    margin-right: 6px;
-  }
-
-  &:before {
-      content: "";
-      position: absolute;
-      bottom: 6px;
-      left: 0;
-      width: 100%;
-      -webkit-transform-origin: right center;
-      -ms-transform-origin: right center;
-      transform-origin: right center;
-      height: 2px;
-      -webkit-transform: scale(0, 1);
-      -ms-transform: scale(0, 1);
-      transform: scale(0, 1);
-      -webkit-transition: -webkit-transform 0.2s ease;
-      transition: -webkit-transform 0.2s ease;
-      transition: transform 0.2s ease;
-      transition: transform 0.2s ease, -webkit-transform 0.2s ease;
-      @include theme-secondary-gradient(right);
-  }
-
-  &:hover {
-      &:before {
-          -webkit-transform-origin: left center;
-          -ms-transform-origin: left center;
-          transform-origin: left center;
-          -webkit-transform: scale(1, 1);
-          -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
-      }
-  }
+  display: none;
 }
-
-.mdc-top-app-bar__custom-menu.mdc-top-app-bar__custom-menu--active {
-  &:before {
-      -webkit-transform-origin: left center;
-      -ms-transform-origin: left center;
-      transform-origin: left center;
-      -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-      transform: scale(1, 1);
-      @include theme-primary-gradient(right);
-  }
+.mdc-top-app-bar .mdc-button {
+  display: none;
 }
-
-
-/* Drawer Button conditionnal display */
 
 @media(min-width: $theme-drawer-width-threshold) {
+
   .mdc-top-app-bar__action-item--drawer-toggle {
     display: none;
   }
-}
 
-@media(max-width: $theme-drawer-width-threshold) {
-  .mdc-top-app-bar__custom-menu {
-    display: none;
-  }
   .mdc-top-app-bar .mdc-button {
-    display: none;
+    display: initial;
+    margin-left: 20px;
+  }
+
+  .mdc-top-app-bar__custom-menu {
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .material-icons {
+      font-size: 18px;
+      margin-right: 6px;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 6px;
+        left: 0;
+        width: 100%;
+        -webkit-transform-origin: right center;
+        -ms-transform-origin: right center;
+        transform-origin: right center;
+        height: 2px;
+        -webkit-transform: scale(0, 1);
+        -ms-transform: scale(0, 1);
+        transform: scale(0, 1);
+        -webkit-transition: -webkit-transform 0.2s ease;
+        transition: -webkit-transform 0.2s ease;
+        transition: transform 0.2s ease;
+        transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+        @include theme-secondary-gradient(right);
+    }
+
+    &:hover {
+        &:before {
+            -webkit-transform-origin: left center;
+            -ms-transform-origin: left center;
+            transform-origin: left center;
+            -webkit-transform: scale(1, 1);
+            -ms-transform: scale(1, 1);
+            transform: scale(1, 1);
+        }
+    }
+  }
+
+  .mdc-top-app-bar__custom-menu.mdc-top-app-bar__custom-menu--active {
+    &:before {
+        -webkit-transform-origin: left center;
+        -ms-transform-origin: left center;
+        transform-origin: left center;
+        -webkit-transform: scale(1, 1);
+        -ms-transform: scale(1, 1);
+        transform: scale(1, 1);
+        @include theme-primary-gradient(right);
+    }
   }
 }
 
