@@ -2,39 +2,47 @@
 @use "@material/theme" with (
   $primary: #a872ff,
   $secondary: #fb336e,
-  $background: #120031,
-  $surface: #281b42,
+  $background: #100c17,
+  $surface: #271644,
   $on-surface: #ffffff,
 );
 
 /* Theme Colors */
 $theme-purple: #7F00FF;
-$theme-dark-purple: #250063;
-$theme-darker-purple: #120031;
+$theme-dark-purple: #271644;
+$theme-darker-purple: #100c17;
 $theme-pastel-purple: #a872ff;
-$theme-greyed-purple: #281b42;
 $theme-blue: #3f00fc;
 $theme-orange: #f0ba3a;
 $theme-pink: #fb336e;
+$theme-blending-surface: #231b33b3;
 
 /*  Typography */
-@import url('https://fonts.googleapis.com/css?family=Cabin:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Cabin:100,200,300,400,500,700');
 $mdc-typography-font-family: unquote("Cabin, sans-serif");
 
 /* Layout */
+$mdc-layout-grid-default-margin: ("phone": 16px, "tablet": 32px, "desktop": 64px);
 $mdc-layout-grid-max-width: 1500px;
 $theme-drawer-width-threshold: 840px;
 
 // Non-MDC Theme
 
+@mixin theme-brushed-dark-background($direction) {
+  background: #030206;
+  background: -webkit-linear-gradient($direction, #030206 0%, #14101d 30%, #191423 50%, #14101d 70%, #030206 100%) !important;
+  background: -o-linear-gradient($direction, #030206 0%, #14101d 30%, #191423 50%, #14101d 70%, #030206 100%) !important;
+  background: linear-gradient(to $direction, #030206 0%, #14101d 30%, #191423 50%, #14101d 70%, #030206 100%) !important;
+}
+
 @mixin theme-primary-gradient($direction) {
     background: $theme-pastel-purple;
-    background: -webkit-linear-gradient(to $direction, $theme-purple, $theme-blue) !important;
+    background: -webkit-linear-gradient($direction, $theme-purple, $theme-blue) !important;
     background: linear-gradient(to $direction, $theme-purple, $theme-blue) !important;
 }
 
 @mixin theme-secondary-gradient($direction) {
     background: $theme-orange;
-    background: -webkit-linear-gradient(to $direction, $theme-orange, $theme-pink) !important;
+    background: -webkit-linear-gradient($direction, $theme-orange, $theme-pink) !important;
     background: linear-gradient(to $direction, $theme-orange, $theme-pink) !important;
 }

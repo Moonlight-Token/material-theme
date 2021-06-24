@@ -1,8 +1,11 @@
+@use "sass:map";
+
 body {
   display: flex;
+  justify-content: center;
   margin: 0;
-  background-color: $theme-darker-purple;
   color: white;
+  @include theme-brushed-dark-background(right);
 }
 
 a {
@@ -12,13 +15,27 @@ a {
 
 // Grid
 
+/* Adjustements for top app bar display */
 .mdc-layout-grid {
   margin-top: 56px;
+  padding-top: 16px;
 }
 
+/* Yes, mdc top app bar hase a different breakpoint than mdc grid */
 @media(min-width: 600px) {
   .mdc-layout-grid {
     margin-top: 64px;
+  }
+}
+
+/* force content to fill all the available space */
+.mdc-layout-grid {
+    width: 100%;
+}
+
+@media (min-width: $mdc-layout-grid-max-width) {
+  .mdc-layout-grid {
+      width: $mdc-layout-grid-max-width;
   }
 }
 
@@ -55,7 +72,23 @@ a {
 
 .mdc-top-app-bar__row {
   max-width: $mdc-layout-grid-max-width;
-  padding: 0 10px;
+  padding: 0 map.get($mdc-layout-grid-default-margin, "phone");
+}
+
+@media(min-width: map.get($mdc-layout-grid-breakpoints, "tablet")) {
+  .mdc-top-app-bar__row {
+    padding: 0 map.get($mdc-layout-grid-default-margin, "tablet");
+  }
+}
+
+@media(min-width: map.get($mdc-layout-grid-breakpoints, "desktop")) {
+  .mdc-top-app-bar__row {
+    padding: 0 map.get($mdc-layout-grid-default-margin, "desktop");
+  }
+}
+
+.mdc-top-app-bar__section {
+  padding: 8px 0;
 }
 
 .mdc-top-app-bar__custom-title-container {
@@ -88,80 +121,81 @@ a {
   color: $theme-orange;
 }
 
-.mdc-top-app-bar .mdc-button {
-  margin-left: 20px;
-}
+/* Drawer Button and titles conditionnal display */
 
 .mdc-top-app-bar__custom-menu {
-  position: relative;
-  cursor: pointer;
-  margin-left: 20px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-
-  .material-icons {
-    font-size: 18px;
-    margin-right: 6px;
-  }
-
-  &:before {
-      content: "";
-      position: absolute;
-      bottom: 6px;
-      left: 0;
-      width: 100%;
-      -webkit-transform-origin: right center;
-      -ms-transform-origin: right center;
-      transform-origin: right center;
-      height: 2px;
-      -webkit-transform: scale(0, 1);
-      -ms-transform: scale(0, 1);
-      transform: scale(0, 1);
-      -webkit-transition: -webkit-transform 0.2s ease;
-      transition: -webkit-transform 0.2s ease;
-      transition: transform 0.2s ease;
-      transition: transform 0.2s ease, -webkit-transform 0.2s ease;
-      @include theme-secondary-gradient(right);
-  }
-
-  &:hover {
-      &:before {
-          -webkit-transform-origin: left center;
-          -ms-transform-origin: left center;
-          transform-origin: left center;
-          -webkit-transform: scale(1, 1);
-          -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
-      }
-  }
+  display: none;
 }
-
-.mdc-top-app-bar__custom-menu.mdc-top-app-bar__custom-menu--active {
-  &:before {
-      -webkit-transform-origin: left center;
-      -ms-transform-origin: left center;
-      transform-origin: left center;
-      -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-      transform: scale(1, 1);
-      @include theme-primary-gradient(right);
-  }
+.mdc-top-app-bar .mdc-button {
+  display: none;
 }
-
 
 @media(min-width: $theme-drawer-width-threshold) {
+
   .mdc-top-app-bar__action-item--drawer-toggle {
     display: none;
   }
-}
 
-@media(max-width: $theme-drawer-width-threshold) {
-  .mdc-top-app-bar__custom-menu {
-    display: none;
-  }
   .mdc-top-app-bar .mdc-button {
-    display: none;
+    display: initial;
+    margin-left: 20px;
+  }
+
+  .mdc-top-app-bar__custom-menu {
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .material-icons {
+      font-size: 18px;
+      margin-right: 6px;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 6px;
+        left: 0;
+        width: 100%;
+        -webkit-transform-origin: right center;
+        -ms-transform-origin: right center;
+        transform-origin: right center;
+        height: 2px;
+        -webkit-transform: scale(0, 1);
+        -ms-transform: scale(0, 1);
+        transform: scale(0, 1);
+        -webkit-transition: -webkit-transform 0.2s ease;
+        transition: -webkit-transform 0.2s ease;
+        transition: transform 0.2s ease;
+        transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+        @include theme-secondary-gradient(right);
+    }
+
+    &:hover {
+        &:before {
+            -webkit-transform-origin: left center;
+            -ms-transform-origin: left center;
+            transform-origin: left center;
+            -webkit-transform: scale(1, 1);
+            -ms-transform: scale(1, 1);
+            transform: scale(1, 1);
+        }
+    }
+  }
+
+  .mdc-top-app-bar__custom-menu.mdc-top-app-bar__custom-menu--active {
+    &:before {
+        -webkit-transform-origin: left center;
+        -ms-transform-origin: left center;
+        transform-origin: left center;
+        -webkit-transform: scale(1, 1);
+        -ms-transform: scale(1, 1);
+        transform: scale(1, 1);
+        @include theme-primary-gradient(right);
+    }
   }
 }
 
