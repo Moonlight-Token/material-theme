@@ -22,6 +22,7 @@ $theme-pink: #fb336e;
 $mdc-typography-font-family: unquote("Cabin, sans-serif");
 
 /* Layout */
+$mdc-layout-grid-default-margin: ("phone": 16px, "tablet": 32px, "desktop": 64px);
 $mdc-layout-grid-max-width: 1500px;
 $theme-drawer-width-threshold: 840px;
 

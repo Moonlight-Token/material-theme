@@ -1,5 +1,8 @@
+@use "sass:map";
+
 body {
   display: flex;
+  justify-content: center;
   margin: 0;
   background-color: $theme-darker-purple;
   color: white;
@@ -12,13 +15,27 @@ a {
 
 // Grid
 
+/* Adjustements for top app bar display */
 .mdc-layout-grid {
   margin-top: 56px;
+  padding-top: 16px;
 }
 
+/* Yes, mdc top app bar hase a different breakpoint than mdc grid */
 @media(min-width: 600px) {
   .mdc-layout-grid {
     margin-top: 64px;
+  }
+}
+
+/* force content to fill all the available space */
+.mdc-layout-grid {
+    width: 100%;
+}
+
+@media (min-width: $mdc-layout-grid-max-width) {
+  .mdc-layout-grid {
+      width: $mdc-layout-grid-max-width;
   }
 }
 
@@ -55,7 +72,23 @@ a {
 
 .mdc-top-app-bar__row {
   max-width: $mdc-layout-grid-max-width;
-  padding: 0 10px;
+  padding: 0 map.get($mdc-layout-grid-default-margin, "phone");
+}
+
+@media(min-width: map.get($mdc-layout-grid-breakpoints, "tablet")) {
+  .mdc-top-app-bar__row {
+    padding: 0 map.get($mdc-layout-grid-default-margin, "tablet");
+  }
+}
+
+@media(min-width: map.get($mdc-layout-grid-breakpoints, "desktop")) {
+  .mdc-top-app-bar__row {
+    padding: 0 map.get($mdc-layout-grid-default-margin, "desktop");
+  }
+}
+
+.mdc-top-app-bar__section {
+  padding: 8px 0;
 }
 
 .mdc-top-app-bar__custom-title-container {
@@ -149,6 +182,8 @@ a {
   }
 }
 
+
+/* Drawer Button conditionnal display */
 
 @media(min-width: $theme-drawer-width-threshold) {
   .mdc-top-app-bar__action-item--drawer-toggle {
