@@ -1,16 +1,16 @@
 @use "sass:map";
 
-body {
+.moonlight-app {
   display: flex;
   justify-content: center;
   margin: 0;
   color: white;
   @include theme-brushed-dark-background(right);
-}
 
-a {
-  color: inherit;
-  text-decoration: inherit;
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
 }
 
 // Grid
@@ -213,7 +213,7 @@ a {
 
 .mdc-drawer {
   border: none;
-  background-color: $theme-darker-purple;
+  background-color: $theme-dark-purple;
 
   .mdc-list-item--gradient {
     @include theme-primary-gradient(left);
