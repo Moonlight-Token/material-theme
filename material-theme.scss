@@ -1,0 +1,8 @@
+/* MDC Theme */
+@use "@material/theme" with (
+  $primary: #a872ff,
+  $secondary: #fb336e,
+  $background: #100c17,
+  $surface: #271644,
+  $on-surface: #ffffff,
+);
